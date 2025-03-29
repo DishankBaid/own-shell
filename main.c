@@ -23,7 +23,7 @@ void initShell()
     printf("\n");
     sleep(1);
 
-    // clear();
+    clear();
 }
 int main()
 {
