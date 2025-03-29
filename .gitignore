@@ -1,0 +1,25 @@
+# Ignore compiled executables
+main
+
+# Ignore object files
+*.o
+
+# Ignore other build artifacts
+build/
+bin/
+obj/
+
+# Ignore log files
+*.log
+
+# Ignore temporary files
+*.tmp
+*.swp
+
+# Ignore IDE-specific files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
