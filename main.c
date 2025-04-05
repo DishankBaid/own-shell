@@ -1,32 +1,38 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <string.h>
+#include <sys/types.h>
+#include <sys/stat.h>
 
-// #define char userInput[1000]; // defining max user input
+#define LINE_BUFFER_SIZE 1024
 
-// #define clear() printf("\033[H\033[J")
-
-void initShell()
+void basic_loop()
 {
-    // clear();
+    char *buffer;
+    size_t buffsize = 4;
+    size_t read;
 
-    printf("\n\n\n\n**************"
-           "***********************");
-    printf("\n\n\n\t****MY SHELL****");
-    printf("\n\n\t-USE AT YOUR OWN RISK-");
-    printf("\n\n\n\n*******************"
-           "***********************");
+    buffer = (char *)malloc(buffsize * sizeof(char));
 
-    char *username = getenv("USER");
-    printf("\n");
-    printf("this is username %s", username);
-    printf("\n");
-    sleep(1);
+    if (buffer == NULL)
+    {
+        perror("Unexpected Error occured and memory was not allocated.");
+        exit(EXIT_FAILURE);
+    }
 
-    clear();
+    printf("Type Something: ");
+    while (read = getline(&buffer, &buffsize, stdin))
+    {
+        printf("text: %s \n", buffer);
+    }
+
+    printf("Was not able to read line");
+    free(buffer);
 }
+
 int main()
 {
-    initShell();
+    basic_loop();
     return 0;
 }
